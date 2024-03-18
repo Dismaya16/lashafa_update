@@ -1,0 +1,413 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing:border-box;
+            }
+            body{
+                background: lightgray;
+            }
+            header{
+                position: fixed;
+                top: 0;
+                left:0;
+                right:0;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                font-size: 18px;
+                padding: 10px;
+                align-items: center;
+                background: white;
+            }
+            header h1{
+                width: 20%;
+                margin: 0 0 0 40px;
+                transition: All 1s;
+                cursor: pointer;
+            }
+            header h1:hover{
+                transform: scale(1.2);
+            }
+            header .items{
+                margin: 0 12px;
+            }
+            header .items button{
+                padding: 10px 30px 10px;
+                margin: 0 10px;
+                background: transparent;
+                border: 1px solid black;
+                border-radius: 7px;
+                transition: All .3s;
+                cursor: pointer;
+            }
+            header .items i{
+                margin: 0 10px;
+                transition: .2s linear; 
+                color:black;               
+                cursor: pointer;
+            }
+            header .items i:hover{
+                color: violet;
+            }
+            header .logo-bars{
+                display: flex;
+                align-items: center;
+            }
+            header .items button:hover{
+                transform: scale(1.3);
+            }
+            header .logo-bars i{
+               margin: 0 0 0 20px;
+               transition: .2s linear;
+               color: black;
+            }
+            
+            header .logo-bars i:hover{
+                color: violet;
+            }
+           
+            footer{               
+                position: fixed;
+                width: 100%;
+                height: auto;
+                bottom: 0;
+                background: white;
+            }
+            footer .fa-items{
+             display:flex;
+             align-items: center;             
+             justify-content: space-between;
+             flex-direction: row;
+             padding: 12px;
+             margin: 0 10px;
+            }
+            footer .fa-items i{          
+             margin: 0 7px;
+             
+            }
+            footer .fa-items a{
+              color: black;
+              font-weight: bold;
+              text-decoration: none;
+              font-size: 20px;
+              transition: .2s linear;
+            }
+            
+            footer .fa-items a:hover{
+                color: violet;
+            }
+            .container{
+                margin: 100px 300px;;
+            }
+            .container .pfp{
+                display:flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .container .name{
+                display: flex;
+                justify-content: space-between;
+                align-items:center;
+                margin: 10px 80px;
+                
+            }
+            .container .email{
+                display: flex;
+                justify-content: space-between;
+                align-items:center;
+                margin: 10px 80px;
+                
+            }
+            .container .password{
+                display: flex;
+                justify-content: space-between;
+                align-items:center;
+                margin: 10px 80px;
+           
+                
+            }
+            .container .phonenumber{
+                display: flex;
+                justify-content: space-between;
+                align-items:center;
+                margin: 10px 80px;
+                
+            }
+            .container .pfp img{
+                border-radius: 50px;
+            }
+
+             header .search form input{
+                 padding: 10px 10px 10px;
+                 padding-right: 80px;
+                 font-size: 14px;
+                 border-radius: 10px;
+                 border: 1px solid black;
+                 font-weight: 500;
+             }
+             header .search form button{
+                 padding: 5px 5px 5px;
+                 color: black;
+                 background: none;
+                 border: 1px solid black;
+                 border-radius: 10px;
+                 transition: All .2s;
+                 cursor: pointer;
+             }
+             header .search form button:hover{
+                 transform: scale(1.2);
+                 
+             }
+             header .search form i{
+                 margin-right: 10px;
+                 transition: .2s linear;
+             }
+             
+             header .search input:hover{
+                 box-shadow: 0 0 0 1px;
+             }
+             
+             header .search form i:hover{
+                 color: gray;
+                 cursor: pointer;
+                 
+                 
+             }
+              
+               .sidebar-menu{
+             position: fixed;
+             top: 0;
+             left:-250;
+             background: white;
+             width: 250px;
+             height: 100vh;
+             box-shadow: 0px 2px 5px;
+             overflow-y: scroll;
+             transition: 0.6s ease;
+             transition-property: left;
+             }
+             .sidebar-menu img{
+                 margin: 10px;
+                 margin-left: 80px;
+                 border-radius: 50px;
+             }
+             .sidebar{
+                 background: tomato;
+             }
+             
+             .sidebar .close-btn{
+                 cursor: pointer;
+                 color: white;
+             }
+             .sidebar .close-btn span{
+                 margin-left: 5px;
+                 font-color:white;
+                 transition: .2s linear;
+                 font-size: 30px;
+             }
+             
+             .sidebar .close-btn span:hover{
+                 color: black;
+              }
+              
+              .sidebar h1{
+                 color: white;
+                 text-align: center;
+                 font-size: 15px;
+                 padding-bottom: 10px;
+              }
+              .menu {
+                  margin-top: 30px;
+              }
+              .menu .items{
+                  cursor: pointer;
+              }
+              .menu .items a{
+                  display: block;
+                  flex-direction: column;
+                  color: black;
+                  text-decoration: none;
+                  font-size: 19px;
+                  padding: 10px 30px;
+                  margin: 10px;
+                  background: lightgray;
+                  transition: .2s linear;
+              }
+              .menu .items i{
+                  margin-left: 10px;
+                  transition: 0.3s ease;
+              }
+              
+              #list{
+                  position: absolute;
+                  right: 0;
+                  margin-right: 25px;                
+              }
+              .menu .items .sub-menu{
+                  display: none;
+              }
+              
+              .sidebar-menu.active{
+                  left: 0;
+              }
+              .logo-bars .btn-bars{
+                  cursor: pointer;
+                  
+              }
+              
+              .rotate{
+                  transform: rotate(90deg);
+              }
+              
+              .menu .sub-menu a{
+                  background: violet;
+                  color: white;
+                  
+              }
+              .menu .sub-menu{
+                  position: relative;
+              }
+              .sub-menu i{
+                  position: absolute;
+                  right: 0;
+                  margin-top: -40px;
+                  margin-right: 80px;
+                  
+              }
+              .sub-menu .item{
+                  width: 70%;
+                  
+              }
+              
+              .menu a{
+                  border-radius: 20px;
+              }
+              
+              .menu a:hover{
+                  box-shadow: 0 0 0 2px black;
+              }
+        </style>
+    </head>
+    <body>
+        <header> 
+               <div class="logo-bars">      
+                <div class="btn-bars">
+                <i class="fa-solid fa-bars"></i>
+                </div>         
+                <h1 onclick="location.href='index.html'">LASHAFA</h1>
+            </div>                  
+            <div class="search">
+                <form>
+                    <i class="fa-solid fa-magnifying-glass"></i><input name="type" placeholder="Type here to search">
+                    <button type="enter">Search</button>
+                </form>
+            </div>                 
+            <div class="items">
+                <a href="https://www.facebook.com/profile.php?id=100090715960125"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.youtube.com/channel/UCzyCbj43CphJNjpx5dlkvBg"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.instagram.com/zhy__essentials/p/Cog0NVADSuU/?img_index=1"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://twitter.com/DismayaJhon"><i class="fa-brands fa-twitter"></i></a>
+                <button onclick="location.href='signup.html'">Sign Up</button>
+                <button onclick="location.href='login.html'">Log In</button>
+            </div>
+        </header>
+            <div class="container">
+                <div class="pfp">
+                    <img src="https://scontent.fmnl16-1.fna.fbcdn.net/v/t39.30808-6/428699805_340970412270155_4521787333410011108_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFpJp69CxHF8g_iZEeBQ942spmq_7Ifqpuymar_sh-qmxqB_TFmPI8kVPdF1ds6czBYinNQ6KqQgQp8fnfYX8f4&_nc_ohc=krBhTcHXvcsAX82Nk5w&_nc_ht=scontent.fmnl16-1.fna&oh=00_AfBOiNp6Ass98k1sf93DEsduTnW1ZCR3bpdpDJY2vCL8SA&oe=65F0D21C" width="80" height="80">
+                </div>
+                <br>
+                <hr></hr>
+                <div class="name">
+                    <h4>Name</h4>
+                    <h4>Jhon Gabriel Dismaya</h5>
+                </div>
+                <hr></hr>
+                 <div class="email">
+                    <h4>Email</h4>
+                    <h4>kxhrae7e@gmail.com</h5>
+                </div>
+                <hr></hr>
+                 <div class="phonenumber">
+                    <h4>Phone Number</h4>
+                    <h4>09166340191</h5>
+                </div>
+                <hr></hr>
+                 <div class="password">
+                    <h4>Password</h4>
+                    <h4>wapikei_12</h5>
+                </div>
+            </div>
+        <footer>
+            <div class="fa-items">
+                 <a href="index.html"><i class="fa-solid fa-house"></i>Home</a>
+                 <a href="#"><i class="fa-solid fa-cart-shopping"></i>Shopping Cart</a>
+                 <a href="#"><i class="fa-solid fa-truck"></i>Delivery</a>
+                 <a href="#"><i class="fas fa-user-circle"></i>Account</a>
+            </div>
+        </footer>
+        
+      
+    
+ <div class="sidebar-menu">
+             <nav class="sidebar">
+                 <div class="close-btn">
+                     <span>&times;</span>
+               </div>
+                <img src="https://scontent.fmnl16-1.fna.fbcdn.net/v/t39.30808-6/428699805_340970412270155_4521787333410011108_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFpJp69CxHF8g_iZEeBQ942spmq_7Ifqpuymar_sh-qmxqB_TFmPI8kVPdF1ds6czBYinNQ6KqQgQp8fnfYX8f4&_nc_ohc=krBhTcHXvcsAX82Nk5w&_nc_ht=scontent.fmnl16-1.fna&oh=00_AfBOiNp6Ass98k1sf93DEsduTnW1ZCR3bpdpDJY2vCL8SA&oe=65F0D21C" width="80" height="80"></img>
+                <h1>Jhon Gabriel Dismaya</h1>
+             </nav>
+             <div class="menu">
+                 <div class="items"><a class="sub-btn">Cetegories<i class="fa-solid fa-list"></i>
+                  <i id="list" class="fa-solid fa-angle-right"></i>
+                 </a>
+                 <div class="sub-menu">
+                     <a href="" class="item">Shoes</a><i class="fa-solid fa-shoe-prints"></i>
+                     <a href="" class="item">Clothes</a><i class="fa-solid fa-shirt"></i>
+                     <a href="" class="item">Pants</a><i class="fa-solid fa-user-tie"></i>
+                     <a href="" class="item">Foods</a><i class="fa-solid fa-bowl-food"></i>
+                     <a href="" class="item">Soaps</a><i class="fa-solid fa-soap"></i>
+                     <a href="" class="item">Makeup</a><i class="fa-solid fa-spa"></i>
+                      <a href="" class="item">Hats</a><i class="fa-solid fa-hat-cowboy"></i>
+                     <a href="" class="item">Glasses</a><i class="fa-solid fa-glasses"></i>
+                     <a href="" class="item">Headset</a><i class="fa-solid fa-headset"></i>
+                 </div>
+                 </div>
+                 <div class="items"><a href="#">Settings<i class="fa-solid fa-gear"></i></a></div>
+                  <div class="items"><a href="#">FAQ<i class="fa-solid fa-question"></i></a></div>
+                 <div class="items"><a class="sub-btn">Help Center<i class="fa-solid fa-handshake-angle"></i>
+                 <i id="list" class="fa-solid fa-angle-right"></i>
+                 </a>
+                 <div class="sub-menu">
+                     <a href="">How to use website</a>
+                     <a href="">Policy</a>
+                     <a href="">Feedback</a>
+                 </div>
+                 </div>
+                 <div class="items"><a href="#">About Us<i class="fa-solid fa-circle-info"></i></a></div>
+             </div>
+            </div>
+            
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+         <script>
+             
+             $(document).ready(function(){
+                 $('.btn-bars').click(function(){
+                     $('.sidebar-menu').addClass('active');                  
+                 })
+                 $('.close-btn').click(function(){
+                     $('.sidebar-menu').removeClass('active');
+                 })
+                 
+                 $('.sub-btn').click(function(){
+                     $(this).next('.sub-menu').slideToggle();
+                     $(this).find('#list').toggleClass('rotate');
+                 })
+             });
+         </script>
+    </body>
+    
+</html>

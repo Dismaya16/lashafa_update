@@ -1,0 +1,130 @@
+<html>
+    <head>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                
+            }
+            body{
+                background: lightgray;
+            }
+            
+            .login-form{
+                width: 30%;
+                height: 350px;
+                background: white;
+                margin: 100px auto;
+                color: black;                
+                font-size: 15px;
+                box-shadow: 0px 2px 5px;
+                border-radius: 20px;
+            }
+            .input-box{
+               position: relative;
+                margin: 20px 10px;
+                width: 80%;
+                height: 10%;
+            }
+            .login-form h1{
+                font-size: 40px;
+                text-align: center;
+            }
+            .login-form .input-box input{
+                width: 100%;
+                height: 100%;
+                background: transparent;
+                border: none  ;              
+                border-radius: 20px;
+                border: 1px solid black;
+                padding-left: 10px;
+            }
+             .login-form .input-box input::placeholder{
+                color: black;
+            }
+             .login-form .input-box i{
+                position: absolute;
+                right: 20px;
+                top: 30%;
+            }
+            
+            
+            .login-form .input-checkbox{
+                margin-left: 15px;
+                margin-top: 50px;
+            }
+            .login-form .input-checkbox label input{
+                accent-color: black;
+                margin-right: 5px;
+     
+            }
+            
+            .login-form .btn{
+            display: flex;             
+            justify-content: space-between;
+            align-items: center;             
+            margin: 0 15px;
+            }
+            
+            .login-form .btn button{
+            border: none;
+            border: 1px solid black;
+                    background: white;
+                color:black;
+                 padding: 7px 30px;
+                 border-radius: 10px;
+                 cursor: pointer;
+                 transition: All .2s;
+                 
+            }
+            
+            .login-form .btn button:hover{
+                transform: scale(1.2);
+            }
+            
+            .login-form .paragraph{
+                align-items:center;
+                justify-content: center;
+                margin-top: 25px;
+                display: flex;
+            }
+            
+             .login-form .paragraph p{
+               margin-right: 5px;
+            }
+            
+        </style>
+    </head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <body>
+        <div class="login-form">
+            <form>
+                 <h1>Login</h1>
+                 <br>
+                <div class="input-box">
+                <input type="email" name="email"  placeholder="Email" required>
+                <i class="fa-solid fa-envelope"></i>
+               </div>
+               <div class="input-box">
+                <input type="password" name="password" placeholder="Password" required>
+                <i class="fa-solid fa-lock"></i>
+                 </div>
+                <div class="input-checkbox">
+                <label><input type="checkbox" required>Remember Me</label>
+                </div>
+                <br>
+                <div class="btn">
+                <button onclick="location.href='index.html'">Back</button></a>                    
+                <button>Log In</button>
+                </div>
+                
+                <div class="paragraph">
+                    <p>Don't have an account?</p>
+                    <a href="signup.html">Sign Up</a>
+                </div>
+            </form>
+
+        </div>
+    </body>
+</html>

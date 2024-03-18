@@ -1,0 +1,1379 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing:border-box;
+            }
+            .checked {
+  color: orange;
+}
+            body{
+                background: lightgray;
+            }
+            
+            header{
+                position: fixed;
+                z-index:1;
+                top: 0;
+                left: 0;
+                right:0;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                font-size: 18px;
+                padding: 10px;
+                align-items: center;
+                background: white;
+            }
+            
+            header h1{
+                width: 20%;
+                margin: 0 0 0 40px;
+                transition: All 1s;
+                cursor: pointer;
+            }
+            
+            header h1:hover{
+                transform: scale(1.2);
+            }
+            header .items{
+                margin: 0 12px;
+            }
+            
+            header .items button{
+                padding: 10px 30px 10px;
+                margin: 0 10px;
+                background: transparent;
+                border: 1px solid black;
+                border-radius: 7px;
+                transition: All .3s;
+                cursor: pointer;
+            }
+            
+            header .items i{
+                margin: 0 10px;
+                transition: .2s linear; 
+                color:black;               
+                cursor: pointer;
+            }
+            
+            header .items i:hover{
+                color: violet;
+            }
+            
+            header .logo-bars{
+                display: flex;
+                align-items: center;
+            }
+            
+            header .items button:hover{
+                transform: scale(1.3);
+            }
+            
+            header .logo-bars i{
+               margin: 0 0 0 20px;
+               transition: .2s linear;
+               color: black;
+            }
+            
+            header .logo-bars i:hover{
+                color: violet;
+            }
+           
+            footer{               
+                position: fixed;
+                width: 100%;
+                height: auto;
+                bottom: 0;
+                background: white;
+            }
+            footer .fa-items{
+             display:flex;
+             align-items: center;             
+             justify-content: space-between;
+             flex-direction: row;
+             padding: 12px;
+             margin: 0 10px;
+            }
+            
+            footer .fa-items i{          
+             margin: 0 7px;
+             
+            }
+            
+            footer .fa-items a{
+              color: black;
+              font-weight: bold;
+              text-decoration: none;
+              font-size: 20px;
+              transition: .2s linear;
+            }
+            
+            footer .fa-items a:hover{
+                color: violet;
+            }
+             
+             header .search form button{
+                 padding: 5px 5px 5px;
+                 color: black;
+                 background: none;
+                 border: 1px solid black;
+                 border-radius: 10px;
+                 transition: All .2s;
+                 cursor: pointer;
+             }
+             
+             header .search form button:hover{
+                 transform: scale(1.2);                 
+             }
+             
+             header .search form i{
+                 margin-right: 10px;
+                 transition: .2s linear;
+             }                          
+             
+             header .search input:hover{
+                 box-shadow: 0 0 0 1px;
+             }
+             
+             .image-popup{
+             display: none;
+             background: rgba(0,0,0,.9);
+                top: 0;
+                right:0;
+                 position: fixed;
+                 width: 100%;
+                 height: 100%;  
+                 z-index: 1;             
+             }
+             
+             .image-popup img{
+                   margin: 100px;
+                   margin-left: 400px;
+                   border-radius: 5px;
+             }
+             
+             .image-popup span{
+                   position: absolute;
+                   right: 10;
+                   color:white;
+                   font-size: 40px;
+                   font-weight: bold;         
+                   transition: All .2s;
+             }
+             
+             .image-popup .close-image{
+                 cursor: pointer;
+             }
+             
+             .image-popup span:hover{
+                   transform: scale(1.2);
+             }          
+             
+             .sidebar-menu{
+             position: fixed;
+             z-index:1;
+             top: 0;
+             left:-250;
+             background: white;
+             width: 250px;
+             height: 100vh;
+             box-shadow: 0px 2px 5px;
+             overflow-y: scroll;
+             transition: 0.6s ease;
+             transition-property: left;
+             }
+             
+             .sidebar-menu img{
+                 margin: 10px;
+                 margin-left: 80px;
+                 border-radius: 50px;
+             }
+             
+             .sidebar{
+                 background: tomato;
+             }
+             
+             .sidebar .close-btn{
+                 cursor: pointer;
+                 color: white;
+             }
+             
+             .sidebar .close-btn span{
+                 margin-left: 5px;
+                 font-color:white;
+                 transition: .2s linear;
+                 font-size: 30px;
+             }
+             
+             .sidebar .close-btn span:hover{
+                 color: black;
+              }
+              
+              .sidebar h1{
+                 color: white;
+                 text-align: center;
+                 font-size: 15px;
+                 padding-bottom: 10px;
+              }
+              
+              .menu {
+                  margin-top: 30px;
+              }
+              
+              .menu .items{
+                  cursor: pointer;
+              }
+              
+              .menu .items a{
+                  display: block;
+                  flex-direction: column;
+                  color: black;
+                  text-decoration: none;
+                  font-size: 19px;
+                  padding: 10px 30px;
+                  margin: 10px;
+                  background: lightgray;
+                  transition: .2s linear;
+              }
+              
+              .menu .items i{
+                  margin-left: 10px;
+                  transition: 0.3s ease;
+              }
+              
+              #list{
+                  position: absolute;
+                  right: 0;
+                  margin-right: 25px;                
+              }
+              
+              .menu .items .sub-menu{
+                  display: none;
+              }
+              
+              .sidebar-menu.active{
+                  left: 0;
+              }
+              
+              .logo-bars .btn-bars{
+                  cursor: pointer;
+                  
+              }
+              
+              .rotate{
+                  transform: rotate(90deg);
+              }
+              
+              .menu .sub-menu a{
+                  background: violet;
+                  color: white;
+                  
+              }
+              
+              .menu a{
+                  border-radius: 20px;
+              }
+              
+              .menu a:hover{
+                  box-shadow: 0 0 0 2px black;
+              }
+              
+               .sub-menu{
+                  position: relative;
+                  
+              }
+              
+               .sub-menu i{
+                  position: absolute;
+                  right: 0;
+                  margin-top: -40px;
+                  margin-right: 80px;
+                  
+              }
+              
+              .sub-menu .item{
+                  width: 70%;
+                  
+              }
+              
+              .img-boxcolor{
+                  position: relative;
+                  width: 100%;
+                  height: 100%;
+                  border: 1px solid black;
+              }
+              
+               .img-radius{                                              
+                   background:white;
+                   box-shadow: 0 1px 3px;
+                   border-radius: 5px;
+                   width: 20%;
+            }
+            
+            .img-boxcolor img{
+                margin: 22.5px;
+                box-shadow: 0px 0px 0px 1px lightgray; 
+                transition: All .2s;
+                cursor: pointer;
+            }
+             .img-boxcolor img:hover{
+                box-shadow: 0px 0px 0px 1px black; 
+            }                
+             
+             header .search form input{
+                 padding: 10px 10px 10px;
+                 padding-right: 80px;
+                 font-size: 14px;
+                 border-radius: 10px;
+                 border: 1px solid black;
+                 font-weight: 500;
+                 transition: .2s linear;
+             }
+             
+             .name{
+                 margin: 0 18px;
+                 font-weight: 500;
+             }
+             .ratings{
+                 margin: 5px 18px;
+                 font-size: 12px;
+                 font-weight: 400;
+             }
+             .ratings p{
+                 font-weight: 450;
+             }
+             
+             .price{
+                 position:absolute;
+                 font-weight: 450;
+                 right: 30;
+             }
+             
+             .btn-buy{
+                 margin-top: 40px;
+                 display:flex;
+                 justify-content: space-between;
+                 
+             }
+             .btn-buy .btn{
+             font-weight: 500;
+                 width: 80px;
+                 height: 40px;
+                 background: none;
+                 border: none;
+                 outline: none;
+                 box-shadow: 0 0 0 1px;
+                 cursor: pointer;
+                 transition: .2s linear;
+                 margin: 0 10px;
+             }
+             .btn-buy .btn:hover{
+                 color: green;
+                 box-shadow:0 0 0 2px;
+             }
+             
+             .container{
+             
+                 margin: 70px;
+             }
+             .row1{
+                 display: flex;
+                 justify-content: space-between;
+                 flex-wrap: wrap;
+                 flex-direction: row; 
+                 height: 65%;
+             }
+             
+             #cot:hover{
+                 color:red;
+                 box-shadow: 0 0 0 1px red;
+             }
+        </style>
+    </head>
+    <body>
+        <header> 
+            <div class="logo-bars">   
+                <div class="btn-bars">
+                     <i class="fa-solid fa-bars"></i>
+                </div>             
+                <h1>LASHAFA</h1>
+            </div>  
+            <div class="search">
+                <form>
+                    <i class="fa-solid fa-magnifying-glass"></i><input name="type" placeholder="Type here to search">
+                    <button type="enter">Search</button>
+                </form>
+            </div>                 
+            <div class="items">
+                <a href="https://www.facebook.com/profile.php?id=100090715960125"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.youtube.com/channel/UCzyCbj43CphJNjpx5dlkvBg"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.instagram.com/zhy__essentials/p/Cog0NVADSuU/?img_index=1"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://twitter.com/DismayaJhon"><i class="fa-brands fa-twitter"></i></a>
+                <button onclick="location.href='signup.html'">Sign Up</button>
+                <button onclick="location.href='login.html'">Log In</button>
+            </div>
+        </header>
+           <div class="container">
+               <h1>SHOES</h1>
+               <div class="row1">
+                 <div class="img-radius">                
+                    <div class="img-boxcolor">
+                       <img src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/585e2cd2-4f2a-408c-a8ba-f89952cdf332/revolution-6-road-running-shoes-NC0P7k.png"width="200" height="200" > 
+                       </img> 
+                        <div class="name">
+                             Nike Jerota (Sports Shoes)
+                        </div>
+                        <div class="price">
+                             <p>₱250</p>
+                        </div>
+                        <div class="ratings">
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-regular fa-star"></i>             
+                           <p>4 stars</p>         
+                        </div>
+                   <div class="btn-buy">
+                           <button class="btn" id="cot">Add to cart</button>
+                           <button class="btn" onclick="location.href='buy_shoes1.html'">Buy now</button>
+                   </div>
+                   </div>
+              </div>
+                 <div class="img-radius">                
+                    <div class="img-boxcolor">
+                  <img src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/99486859-0ff3-46b4-949b-2d16af2ad421/custom-nike-dunk-high-by-you-shoes.png" width="200" height="200"></img>
+                   <div class="name">
+                             Nike Bakler (KSport)
+                        </div>
+                        <div class="price">
+                             <p>₱247</p>
+                        </div>
+                        <div class="ratings">
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-regular fa-star"></i> 
+                           <i class="fa-regular fa-star"></i> 
+                           <i class="fa-regular fa-star"></i>          
+                           <p>2 stars</p>         
+                        </div>
+                   <div class="btn-buy">
+                           <button class="btn" id="cot">Add to cart</button>
+                           <button class="btn" onclick="location.href='buy_shoes2.html'">Buy now</button>
+                   </div>
+                 </div>
+              </div>
+                 <div class="img-radius">                
+                    <div class="img-boxcolor">
+                  <img src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/6792a985-4a1f-43cd-ad73-39ac3955f042/kd-trey-5-ep-basketball-shoes-mkllTG.png"width="200" height="200"></img> 
+                   <div class="name">
+                             Nike Gred (Brand New)
+                        </div>
+                        <div class="price">
+                             <p>₱253</p>
+                        </div>
+                        <div class="ratings">
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>             
+                           <p>5 stars</p>         
+                        </div>
+                   <div class="btn-buy">
+                           <button class="btn" id="cot">Add to cart</button>
+                           <button class="btn" onclick="location.href='buy_shoes3.html'">Buy now</button>
+                   </div>
+                 </div>
+              </div>        
+               <div class="img-radius">                
+                    <div class="img-boxcolor">           
+                  <img src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/d76b79fd-e11d-458d-8177-fa1746921e21/revolution-7-road-running-shoes-Dfvsch.png"width="200" height="200"></img>
+                   <div class="name">
+                             Nike Whitz (FSport)
+                        </div>
+                        <div class="price">
+                             <p>₱251</p>
+                        </div>
+                        <div class="ratings">
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-regular fa-star"></i>      
+                           <i class="fa-regular fa-star"></i>             
+                           <p>3 stars</p>         
+                        </div>
+                   <div class="btn-buy">
+                           <button class="btn" id="cot">Add to cart</button>
+                           <button class="btn" onclick="location.href='buy_shoes4.html'">Buy now</button>
+                   </div>
+                 </div>
+              </div>                   
+         </div>
+               
+               <br><br>
+               <Hr>
+               <br>
+               <h1>CLOTHES</h1>               
+               <div class="row1">
+                 <div class="img-radius">                
+                    <div class="img-boxcolor">
+                   <img src="https://keepnaturewild.com/cdn/shop/products/keep-nature-wild-wildbear-unisex-tee-heather-tan-12793863241751.jpg?v=1681179357&width=2048"width="200" height="200"></img>
+                    <div class="name">
+                             Wildbear Unisex Tee
+                        </div>
+                        <div class="price">
+                             <p>₱102</p>
+                        </div>
+                        <div class="ratings">
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fas fa-star-half-alt"></i>
+                           <i class="fa-regular fa-star"></i>             
+                           <p>3.5 stars</p>         
+                        </div>
+                   <div class="btn-buy">
+                           <button class="btn" id="cot">Add to cart</button>
+                           <button class="btn" onclick="location.href='buy_tshirt1.html'">Buy now</button>
+                   </div>
+                   </div>
+              </div>
+              <div class="img-radius">                
+                    <div class="img-boxcolor">
+                   <img src="https://keepnaturewild.com/cdn/shop/products/keep-nature-wild-wild-pine-unisex-tee-forest-12789464006679.jpg?v=1681172531&width=2048"width="200" height="200"></img>
+                    <div class="name">
+                            Wildpine Unisex Tee
+                        </div>
+                        <div class="price">
+                             <p>₱99</p>
+                        </div>
+                        <div class="ratings">
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-regular fa-star"></i>  
+                           <i class="fa-regular fa-star"></i>             
+                           <p>3 stars</p>         
+                        </div>
+                   <div class="btn-buy">
+                           <button class="btn" id="cot">Add to cart</button>
+                           <button class="btn" onclick="location.href='buy_tshirt2.html'">Buy now</button>
+                   </div>
+                   </div>
+              </div>
+               <div class="img-radius">                
+                    <div class="img-boxcolor">
+                   <img src="https://enchante.co/cdn/shop/files/enchante_11.4.2324948_e3cb988d-e27b-4f86-9bd4-aa00cdabcd2b.jpg?v=1700050326"width="200" height="200"></img>
+                   <div class="name">
+                             Ski Patrol Tee
+                        </div>
+                        <div class="price">
+                             <p>₱105</p>
+                        </div>
+                        <div class="ratings">
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fas fa-star-half-alt"></i>            
+                           <p>4.5 stars</p>         
+                        </div>
+                   <div class="btn-buy">
+                           <button class="btn" id="cot">Add to cart</button>
+                           <button class="btn" onclick="location.href='buy_tshirt3.html'">Buy now</button>
+                   </div>
+                   </div>
+              </div>
+              <div class="img-radius">                
+                    <div class="img-boxcolor">
+                   <img src="https://enchante.co/cdn/shop/files/ENCHANTE_RECORDS24007.jpg?v=1696441926"width="200" height="200"></img>
+                   <div class="name">
+                             Big Ric & The Goody
+                        </div>
+                        <div class="price">
+                             <p>₱92</p>
+                        </div>
+                        <div class="ratings">
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-regular fa-star"></i>    
+                           <i class="fa-regular fa-star"></i>             
+                           <p>3 stars</p>         
+                        </div>
+                   <div class="btn-buy">
+                           <button class="btn" id="cot">Add to cart</button>
+                           <button class="btn" onclick="location.href='buy_tshirt4.html'">Buy now</button>
+                   </div>
+                   </div>
+              </div>
+               </div>
+               <br><br>
+               <hr>
+               <br>
+                <h1>PANTS</h1>
+               <div class="row1">
+                   <div class="img-radius">                
+                    <div class="img-boxcolor">
+                  <img src="https://www.panchoandlefty.se/cdn/shop/files/Weirdo-Painted-Pants-Front.jpg?v=1699943735"width="200" height="200"></img>
+                  <div class="name">
+                             Visvim Fatigue Pants
+                        </div>
+                        <div class="price">
+                             <p>₱110</p>
+                        </div>
+                        <div class="ratings">
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-regular fa-star"></i>             
+                           <p>4 stars</p>         
+                        </div>
+                   <div class="btn-buy">
+                           <button class="btn" id="cot">Add to cart</button>
+                           <button class="btn" onclick="location.href='buy_pants1.html'">Buy now</button>
+                   </div>
+                   </div>
+              </div>
+               <div class="img-radius">                
+                    <div class="img-boxcolor">
+                  <img src="https://www.blurryrtm.com/cdn/shop/files/image-04.jpg?v=1697369757&width=1445" width="200" height="200"></img>
+                  <div class="name">
+                             Cravat Pants
+                        </div>
+                        <div class="price">
+                             <p>₱127</p>
+                        </div>
+                        <div class="ratings">
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-regular fa-star"></i>  
+                           <i class="fa-regular fa-star"></i>             
+                           <p>3 stars</p>         
+                        </div>
+                   <div class="btn-buy">
+                           <button class="btn" id="cot">Add to cart</button>
+                           <button class="btn" onclick="location.href='buy_pants2.html'">Buy now</button>
+                   </div>
+                   </div>
+              </div>
+               <div class="img-radius">                
+                    <div class="img-boxcolor">
+                  <img src="https://i.ebayimg.com/images/g/En4AAOSwVgdftFVh/s-l1600.jpg"width="200" height="200"></img>
+                  <div class="name">
+                             WJK Tactical Pants
+                        </div>
+                        <div class="price">
+                             <p>₱164</p>
+                        </div>
+                        <div class="ratings">
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fas fa-star-half-alt"></i>
+                           <i class="fa-regular fa-star"></i>             
+                           <p>3.5 stars</p>         
+                        </div>
+                   <div class="btn-buy">
+                           <button class="btn" id="cot">Add to cart</button>
+                           <button class="btn" onclick="location.href='buy_pants3.html'">Buy now</button>
+                   </div>
+                   </div>
+              </div>
+               <div class="img-radius">                
+                    <div class="img-boxcolor">
+                  <img src="https://aussieangler.com.au/wp-content/uploads/2022/07/13166-030-bugstopper-pant-steel_s21_rv_1680x-1280x1600.jpeg"width="200" height="200"></img>
+                  <div class="name">
+                             Simms Fising Pants
+                        </div>
+                        <div class="price">
+                             <p>₱111</p>
+                        </div>
+                        <div class="ratings">
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-regular fa-star"></i> 
+                           <i class="fa-regular fa-star"></i>             
+                           <p>3 stars</p>         
+                        </div>
+                   <div class="btn-buy">
+                           <button class="btn" id="cot">Add to cart</button>
+                           <button class="btn" onclick="location.href='buy_pants4.html'">Buy now</button>
+                   </div>
+                   </div>
+              </div>
+               </div>
+               <br><br>
+               <hr>
+               <br>
+               <h1>FOODS</h1>
+               <div class="row1">
+                    <div class="img-radius">                
+                    <div class="img-boxcolor">
+                    <img src="https://lovecannedfood.com/wp-content/uploads/sites/13/2024/01/Fish-Cakes_-181-1280x1600.jpg.webp"width="200" height="200"></img>
+                     <div class="name">
+                             Loved Canned Food
+                        </div>
+                        <div class="price">
+                             <p>₱75</p>
+                        </div>
+                        <div class="ratings">
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fas fa-star-half-alt"></i>
+                           <i class="fa-regular fa-star"></i>
+                           <i class="fa-regular fa-star"></i>             
+                           <p>2.5 stars</p>         
+                        </div>
+                   <div class="btn-buy">
+                           <button class="btn" id="cot">Add to cart</button>
+                           <button class="btn" onclick="location.href='buy_food1.html'">Buy now</button>
+                   </div>
+                   </div>
+              </div>
+                     <div class="img-radius">                
+                    <div class="img-boxcolor"><img src="https://www.dorothy-porker.com/wp-content/uploads/2019/10/Chicken-Karaage-Japanese-Fried-Chicken-with-Salmon-Roe-and-Mayo-Dorothy-Porker-Foodblog.jpg"width="200" height="200"></img>
+                     <div class="name">
+                             Dorothy Porker
+                        </div>
+                        <div class="price">
+                             <p>₱160</p>
+                        </div>
+                        <div class="ratings">
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fas fa-star-half-alt"></i>
+                           <i class="fa-regular fa-star"></i>             
+                           <p>4.4 stars</p>         
+                        </div>
+                   <div class="btn-buy">
+                           <button class="btn" id="cot">Add to cart</button>
+                           <button class="btn" onclick="location.href='buy_food2.html'">Buy now</button>
+                   </div>
+                   </div>
+              </div>
+                     <div class="img-radius">                
+                    <div class="img-boxcolor"><img src="https://catallia.com/wp-content/uploads/2017/10/Food-Services-Chips-044.jpg"width="200" height="200"></img>
+                     <div class="name">
+                             Yellow Corn Chips
+                        </div>
+                        <div class="price">
+                             <p>₱55</p>
+                        </div>
+                        <div class="ratings">
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>            
+                           <p>5 stars</p>         
+                        </div>
+                   <div class="btn-buy">
+                           <button class="btn" id="cot">Add to cart</button>
+                           <button class="btn" onclick="location.href='buy_food3.html'">Buy now</button>
+                   </div>
+                   </div>
+              </div>
+                     <div class="img-radius">                
+                    <div class="img-boxcolor"><img src="https://tiffanyangela.com/wp-content/uploads/2022/04/Banchan-4-scaled-e1649564277735.jpg"width="200" height="200"></img> 
+                     <div class="name">
+                             Spicy Yellow Radish
+                        </div>
+                        <div class="price">
+                             <p>₱99</p>
+                        </div>
+                        <div class="ratings">
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-regular fa-star"></i>  
+                           <i class="fa-regular fa-star"></i>             
+                           <p>3 stars</p>         
+                        </div>
+                   <div class="btn-buy">
+                           <button class="btn" id="cot">Add to cart</button>
+                           <button class="btn" onclick="location.href='buy_food4.html'">Buy now</button>
+                   </div>
+                   </div>
+              </div>        
+               </div>
+               <br><br>
+               <hr>
+               <br>
+               <h1>SOAPS</h1>
+               <div class="row1">
+                    <div class="img-radius">                
+                    <div class="img-boxcolor">
+                    <img src="https://m.media-amazon.com/images/I/61+Sh8xXE7L.jpg"width="200" height="200"></img>
+                     <div class="name">
+                             Clara Bella Jojoba Soap
+                        </div>
+                        <div class="price">
+                             <p>₱42</p>
+                        </div>
+                        <div class="ratings">
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fas fa-star-half-alt"></i>
+                           <i class="fa-regular fa-star"></i>             
+                           <p>3.2 stars</p>         
+                        </div>
+                   <div class="btn-buy">
+                           <button class="btn" id="cot">Add to cart</button>
+                           <button class="btn" onclick="location.href='buy_soap1.html'">Buy now</button>
+                   </div>
+                   </div>
+              </div>
+               <div class="img-radius">                
+                    <div class="img-boxcolor">
+                    <img src="https://i.ebayimg.com/images/g/~uYAAOSwQUdkoq9K/s-l1600.jpg"width="200" height="200"></img>
+                     <div class="name">
+                             Moisture Pink Soap
+                        </div>
+                        <div class="price">
+                             <p>₱50</p>
+                        </div>
+                        <div class="ratings">
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fas fa-star-half-alt"></i>            
+                           <p>4.7 stars</p>         
+                        </div>
+                   <div class="btn-buy">
+                           <button class="btn" id="cot">Add to cart</button>
+                           <button class="btn" onclick="location.href='buy_soap2.html'">Buy now</button>
+                   </div>
+                   </div>
+              </div>
+               <div class="img-radius">                
+                    <div class="img-boxcolor">
+                    <img src="https://i.ebayimg.com/images/g/wyMAAOSwYINj6vpm/s-l1600.jpg"width="200" height="200"></img>
+                     <div class="name">
+                             Tommy Soap
+                        </div>
+                        <div class="price">
+                             <p>₱125</p>
+                        </div>
+                        <div class="ratings">
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-regular fa-star"></i>             
+                           <p>4 stars</p>         
+                        </div>
+                   <div class="btn-buy">
+                           <button class="btn" id="cot">Add to cart</button>
+                           <button class="btn" onclick="location.href='buy_soap3.html'">Buy now</button>
+                   </div>
+                   </div>
+              </div>
+               <div class="img-radius">                
+                    <div class="img-boxcolor">
+                    <img src="https://i.ebayimg.com/images/g/rfoAAOSwdRVfBiA~/s-l1600.jpg"width="200" height="200"></img>
+                     <div class="name">
+                             Sunlight Soap
+                        </div>
+                        <div class="price">
+                             <p>₱70</p>
+                        </div>
+                        <div class="ratings">
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fas fa-star-half-alt"></i>             
+                           <p>4.6 stars</p>         
+                        </div>
+                   <div class="btn-buy">
+                           <button class="btn" id="cot">Add to cart</button>
+                           <button class="btn" onclick="location.href='buy_soap4.html'">Buy now</button>
+                   </div>
+                   </div>
+              </div>
+           </div>
+            <br><br>
+            <hr>
+            <br>
+               <h1>MAKEUP</h1>
+               <div class="row1">
+                    <div class="img-radius">                
+                    <div class="img-boxcolor">
+                    <img src="https://i.pinimg.com/originals/a1/d8/d4/a1d8d4a1a926be4e005f76aa41c0d21f.jpg"width="200" height="200"></img>
+                     <div class="name">
+                              Miss Swiss Brush Makeup
+                        </div>
+                        <div class="price">
+                             <p>₱64</p>
+                        </div>
+                        <div class="ratings">
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fas fa-star-half-alt"></i>          
+                           <p>4.9 stars</p>         
+                        </div>
+                   <div class="btn-buy">
+                           <button class="btn" id="cot">Add to cart</button>
+                           <button class="btn" onclick="location.href='buy_makeup1.html'">Buy now</button>
+                   </div>
+                   </div>
+              </div>
+                     <div class="img-radius">                
+                    <div class="img-boxcolor">
+                    <img src="https://i.ebayimg.com/images/g/XZEAAOSwxTxlzS8S/s-l1600.jpg"width="200" height="200"></img>
+                     <div class="name">
+                             Lebenrich Makeup Brush
+                        </div>
+                        <div class="price">
+                             <p>₱240</p>
+                        </div>
+                        <div class="ratings">
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-regular fa-star"></i>             
+                           <p>4 stars</p>         
+                        </div>
+                   <div class="btn-buy">
+                           <button class="btn" id="cot">Add to cart</button>
+                           <button class="btn" onclick="location.href='buy_makeup2.html'">Buy now</button>
+                   </div>
+                   </div>
+              </div>
+                     <div class="img-radius">                
+                    <div class="img-boxcolor"><img src="https://nimabrush.com/wp-content/uploads/2021/07/B99C2CF2-0E87-47D0-BF00-BB336CE246A1.jpeg"width="200" height="200"></img>
+                     <div class="name">
+                             Nima Brush Makeup
+                        </div>
+                        <div class="price">
+                             <p>₱65</p>
+                        </div>
+                        <div class="ratings">
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fas fa-star-half-alt"></i>            
+                           <p>4.5 stars</p>         
+                        </div>
+                   <div class="btn-buy">
+                           <button class="btn" id="cot">Add to cart</button>
+                           <button class="btn" onclick="location.href='buy_makeup3.html'">Buy now</button>
+                   </div>
+                   </div>
+              </div>
+                     <div class="img-radius">                
+                    <div class="img-boxcolor"><img src="https://3.bp.blogspot.com/-ztpvh80cf9A/WsI5hbKXhPI/AAAAAAAAAiE/d5iZXLHs1JQrHDScjF08Okv9SRsudxkIgCLcBGAs/s1600/IMG_5827%255B1%255D.JPG"width="200" height="200"></img>
+                     <div class="name">
+                             SLMissGram Beauty Makeup
+                        </div>
+                        <div class="price">
+                             <p>₱120</p>
+                        </div>
+                        <div class="ratings">
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-regular fa-star"></i> 
+                           <i class="fa-regular fa-star"></i>             
+                           <p>3 stars</p>         
+                        </div>
+                   <div class="btn-buy">
+                           <button class="btn" id="cot">Add to cart</button>
+                           <button class="btn" onclick="location.href='buy_makeup4.html'">Buy now</button>
+                   </div>
+                   </div>
+              </div>
+           </div>   
+           <br><br>
+           <hr>
+           <br>  
+           <h1>HAT</h1>
+           <div class="row1">
+                <div class="img-radius">                
+                    <div class="img-boxcolor">
+                    <img src="https://store.hoyt.com/cdn/shop/files/Women_sElementHat.jpg?v=1703105886"width="200" height="200"></img>
+                     <div class="name">
+                             Hoyt Archery
+                        </div>
+                        <div class="price">
+                             <p>₱110</p>
+                        </div>
+                        <div class="ratings">
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-regular fa-star"></i>             
+                           <p>4.1 stars</p>         
+                        </div>
+                   <div class="btn-buy">
+                           <button class="btn" id="cot">Add to cart</button>
+                           <button class="btn" onclick="location.href='buy_shoes1.html'">Buy now</button>
+                   </div>
+                   </div>
+              </div>
+               <div class="img-radius">                
+                    <div class="img-boxcolor">
+                    <img src="https://ernies.ca/cdn/shop/products/eccs.jpg?v=1681495132"width="200" height="200"></img>
+                     <div class="name">
+                             Nike Youth Heritage
+                        </div>
+                        <div class="price">
+                             <p>₱87</p>
+                        </div>
+                        <div class="ratings">
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fas fa-star-half-alt"></i>           
+                           <p>4.6 stars</p>         
+                        </div>
+                   <div class="btn-buy">
+                           <button class="btn" id="cot">Add to cart</button>
+                           <button class="btn" onclick="location.href='buy_shoes1.html'">Buy now</button>
+                   </div>
+                   </div>
+              </div>
+                     <div class="img-radius">                
+                    <div class="img-boxcolor"><img src="https://i.ebayimg.com/images/g/NvEAAOSwGAhgSj4D/s-l1600.jpg"width="200" height="200"></img>
+                     <div class="name">
+                             Billabong Black
+                        </div>
+                        <div class="price">
+                             <p>₱115</p>
+                        </div>
+                        <div class="ratings">
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-regular fa-star"></i>             
+                           <p>4.3 stars</p>         
+                        </div>
+                   <div class="btn-buy">
+                           <button class="btn" id="cot">Add to cart</button>
+                           <button class="btn" onclick="location.href='buy_shoes1.html'">Buy now</button>
+                   </div>
+                   </div>
+              </div>
+                     <div class="img-radius">                
+                    <div class="img-boxcolor"><img src="https://incarnage.com/cdn/shop/files/WhatsAppImage2023-11-30at13.44.23_1280x.jpg?v=1701332131"width="200" height="200"></img>
+                     <div class="name">
+                             Jet Green Carnage
+                        </div>
+                        <div class="price">
+                             <p>₱90</p>
+                        </div>
+                        <div class="ratings">
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-regular fa-star"></i>             
+                           <p>4.0 stars</p>         
+                        </div>
+                   <div class="btn-buy">
+                           <button class="btn" id="cot">Add to cart</button>
+                           <button class="btn" onclick="location.href='buy_shoes1.html'">Buy now</button>
+                   </div>
+                   </div>
+              </div>
+                    </div>
+                    <br><br>
+                    <hr>
+                    <br>  
+           <h1>GLASSES</h1>
+           <div class="row1">
+                <div class="img-radius">                
+                    <div class="img-boxcolor">
+                    <img src="https://www.skistar.com/ShopImages/385164.jpg?width=1280"width="200" height="200"></img>
+                    <div class="name">
+                             Oakley Latch Matte
+                        </div>
+                        <div class="price">
+                             <p>₱600</p>
+                        </div>
+                        <div class="ratings">
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fas fa-star-half-alt"></i>
+                           <i class="fa-regular fa-star"></i>             
+                           <p>3.7 stars</p>         
+                        </div>
+                   <div class="btn-buy">
+                           <button class="btn" id="cot">Add to cart</button>
+                           <button class="btn" onclick="location.href='buy_shoes1.html'">Buy now</button>
+                   </div>
+                   </div>
+              </div>
+                     <div class="img-radius">                
+                    <div class="img-boxcolor">
+                    <img src="https://www.skistar.com/ShopImages/745662.jpg?width=1280"width="200" height="200"></img>
+                    <div class="name">
+                             Narrow Black Sunglasses
+                        </div>
+                        <div class="price">
+                             <p>₱299</p>
+                        </div>
+                        <div class="ratings">
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>          
+                           <p>5.0 stars</p>         
+                        </div>
+                   <div class="btn-buy">
+                           <button class="btn" id="cot">Add to cart</button>
+                           <button class="btn" onclick="location.href='buy_shoes1.html'">Buy now</button>
+                   </div>
+                   </div>
+              </div>
+                     <div class="img-radius">                
+                    <div class="img-boxcolor">
+                    <img src="https://www.dans.ph/cdn/shop/products/image_f1a0c48d-97be-4b68-9106-5b9c3da283f2.jpg?v=1677123414&width=1445"width="200" height="200"></img>
+                    <div class="name">
+                             Hypercraft Sunglasses
+                        </div>
+                        <div class="price">
+                             <p>₱281</p>
+                        </div>
+                        <div class="ratings">
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-regular fa-star"></i>             
+                           <p>4 stars</p>         
+                        </div>
+                   <div class="btn-buy">
+                           <button class="btn" id="cot">Add to cart</button>
+                           <button class="btn" onclick="location.href='buy_shoes1.html'">Buy now</button>
+                   </div>
+                   </div>
+              </div>
+                     <div class="img-radius">                
+                    <div class="img-boxcolor">
+                    <img src="https://www.opiumeyewear.com/cdn/shop/files/OP-M1006-C03.jpg?v=1703142287&width=1280"width="200" height="200"></img>
+                    <div class="name">
+                             Braden Optical Glasses
+                        </div>
+                        <div class="price">
+                             <p>₱399</p>
+                        </div>
+                        <div class="ratings">
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fas fa-star-half-alt"></i>          
+                           <p>4.7 stars</p>         
+                        </div>
+                   <div class="btn-buy">
+                           <button class="btn" id="cot">Add to cart</button>
+                           <button class="btn" onclick="location.href='buy_shoes1.html'">Buy now</button>
+                   </div>
+                   </div>
+              </div>
+           </div>    
+           <br><br>
+           <hr>
+           <br>
+           <h1>Headset</h1>
+           <div class="row1">
+                <div class="img-radius">                
+                    <div class="img-boxcolor">
+                    <img src="https://i.ebayimg.com/images/g/7XoAAOSwAcNiDF5K/s-l1600.jpg"width="200" height="200"></img>
+                    <div class="name">
+                             Blade Hawks RGB Headset
+                        </div>
+                        <div class="price">
+                             <p>₱370</p>
+                        </div>
+                        <div class="ratings">
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>             
+                           <p>5.0 stars</p>         
+                        </div>
+                   <div class="btn-buy">
+                           <button class="btn" id="cot">Add to cart</button>
+                           <button class="btn" onclick="location.href='buy_shoes1.html'">Buy now</button>
+                   </div>
+                   </div>
+              </div>
+                     <div class="img-radius">                
+                    <div class="img-boxcolor">
+                    <img src="https://m.media-amazon.com/images/I/614otNBy+kL.jpg"width="200" height="200"></img>
+                    <div class="name">
+                             Senzer SG550 (Gaming HS)
+                        </div>
+                        <div class="price">
+                             <p>₱289</p>
+                        </div>
+                        <div class="ratings">
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fas fa-star-half-alt"></i>   
+                           <i class="fa-regular fa-star"></i>             
+                           <p>3.8 stars</p>         
+                        </div>
+                   <div class="btn-buy">
+                           <button class="btn" id="cot">Add to cart</button>
+                           <button class="btn" onclick="location.href='buy_shoes1.html'">Buy now</button>
+                   </div>
+                   </div>
+              </div>
+                     <div class="img-radius">                
+                    <div class="img-boxcolor">
+                    <img src="https://m.media-amazon.com/images/I/61ivd5o0bPL.jpg"width="200" height="200"></img>
+                    <div class="name">
+                             Senzer SG500 (Gaming HS)
+                        </div>
+                        <div class="price">
+                             <p>₱229</p>
+                        </div>
+                        <div class="ratings">
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-regular fa-star"></i>    
+                           <i class="fa-regular fa-star"></i>             
+                           <p>3.1 stars</p>         
+                        </div>
+                   <div class="btn-buy">
+                           <button class="btn" id="cot">Add to cart</button>
+                           <button class="btn" onclick="location.href='buy_shoes1.html'">Buy now</button>
+                   </div>
+                   </div>
+              </div>
+                     <div class="img-radius">                
+                    <div class="img-boxcolor">
+                    <img src="https://m.media-amazon.com/images/I/51OLkWdMFwL.jpg"width="200" height="200"></img>
+                    <div class="name">
+                             Jeecoo G80 (Wireless HS)
+                        </div>
+                        <div class="price">
+                             <p>₱339</p>
+                        </div>
+                        <div class="ratings">
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fa-solid fa-star"></i>
+                           <i class="fas fa-star-half-alt"></i>            
+                           <p>4.6 stars</p>         
+                        </div>
+                   <div class="btn-buy">
+                           <button class="btn" id="cot">Add to cart</button>
+                           <button class="btn" onclick="location.href='buy_shoes1.html'">Buy now</button>
+                   </div>
+                   </div>
+              </div>
+           </div>    
+           <br><br>
+           </div>           
+         
+        <footer>
+            <div class="fa-items">
+                 <a href="#index.html"><i class="fa-solid fa-house"></i>Home</a>
+                 <a href="#"><i class="fa-solid fa-cart-shopping"></i>Shopping Cart</a>
+                 <a href="#"><i class="fa-solid fa-truck"></i>Delivery</a>
+                 <a href="accountinfo.html"><i class="fas fa-user-circle"></i>Account</a>
+            </div>
+        </footer>
+        <div class="image-popup">
+            <div class="close-image">
+             <span>&times;</span>
+             </div>
+             <img src="https://1.bp.blogspot.com/-ZrJY0GkZPY0/XPOj2T3oUmI/AAAAAAAANug/YHvP7hTmyh0Kegc_tlyum_PQhGTPQiTrwCLcBGAs/s1600/Essence-Sun-Sand-and-Golden-Rainbows-TE-Bronzer-Brush-New-New-1.jpg"width="400" height="400"></img>
+         </div>
+         <div class="sidebar-menu">
+             <nav class="sidebar">
+                 <div class="close-btn">
+                     <span>&times;</span>
+               </div>
+                <img src="https://scontent.fmnl16-1.fna.fbcdn.net/v/t39.30808-6/428699805_340970412270155_4521787333410011108_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFpJp69CxHF8g_iZEeBQ942spmq_7Ifqpuymar_sh-qmxqB_TFmPI8kVPdF1ds6czBYinNQ6KqQgQp8fnfYX8f4&_nc_ohc=krBhTcHXvcsAX82Nk5w&_nc_ht=scontent.fmnl16-1.fna&oh=00_AfBOiNp6Ass98k1sf93DEsduTnW1ZCR3bpdpDJY2vCL8SA&oe=65F0D21C" width="80" height="80"></img>
+                <h1>Jhon Gabriel Dismaya</h1>
+             </nav>
+             <div class="menu">
+                 <div class="items"><a class="sub-btn">Cetegories<i class="fa-solid fa-list"></i>
+                  <i id="list" class="fa-solid fa-angle-right"></i>
+                 </a>
+                 <div class="sub-menu">
+                     <a href="shoes.html" class="item">Shoes</a><i class="fa-solid fa-shoe-prints"></i>
+                     <a href="clothes.html" class="item">Clothes</a><i class="fa-solid fa-shirt"></i>
+                     <a href="pants.html" class="item">Pants</a><i class="fa-solid fa-user-tie"></i>
+                     <a href="foods.html" class="item">Foods</a><i class="fa-solid fa-bowl-food"></i>
+                     <a href="soaps.html" class="item">Soaps</a><i class="fa-solid fa-soap"></i>
+                     <a href="makeup.html" class="item">Makeup</a><i class="fa-solid fa-spa"></i>
+                      <a href="hats.html" class="item">Hats</a><i class="fa-solid fa-hat-cowboy"></i>
+                     <a href="glasses.html" class="item">Glasses</a><i class="fa-solid fa-glasses"></i>
+                     <a href="headset.html" class="item">Headset</a><i class="fa-solid fa-headset"></i>
+                 </div>
+                 </div>
+                 <div class="items"><a href="settings.html">Settings<i class="fa-solid fa-gear"></i></a></div>
+                  <div class="items"><a href="faq.html">FAQ<i class="fa-solid fa-question"></i></a></div>
+                 <div class="items"><a class="sub-btn">Help Center<i class="fa-solid fa-handshake-angle"></i>
+                 <i id="list" class="fa-solid fa-angle-right"></i>
+                 </a>
+                 <div class="sub-menu">
+                     <a href="https://edu.gcfglobal.org/en/internetbasics/using-a-web-browser/1/">How to use website</a>
+                     <a href="policy.html">Policy</a>
+                     <a href="feedback.html">Feedback</a>
+                 </div>
+                 </div>
+                 <div class="items"><a href="aboutus.html">About Us<i class="fa-solid fa-circle-info"></i></a></div>
+             </div>
+            
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+         <script>
+             document.querySelectorAll('.container img').forEach(image =>{
+                 image.onclick = () =>{
+                     document.querySelector('.image-popup').style.display = 'block';
+                     
+                     document.querySelector('.image-popup img').src = image.getAttribute('src');
+                 }
+             });
+             document.querySelector('.image-popup span').onclick = () =>{
+                 document.querySelector('.image-popup').style.display = 'none';
+             }
+             
+             $(document).ready(function(){
+                 $('.btn-bars').click(function(){
+                     $('.sidebar-menu').addClass('active');                  
+                 })
+                 $('.close-btn').click(function(){
+                     $('.sidebar-menu').removeClass('active');
+                 })
+                 
+                 $('.sub-btn').click(function(){
+                     $(this).next('.sub-menu').slideToggle();
+                     $(this).find('#list').toggleClass('rotate');
+                 })
+             });
+         </script>
+    </body>
+    
+</html>

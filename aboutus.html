@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                
+            }
+            body{
+                background: lightgray;
+            }
+            .container{
+               display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 100px;
+                position: relative;
+            }
+            img{
+                border-radius: 150px;
+            }
+            .container .text{
+                margin-left: 40px;
+            }
+            .container .text h1{
+                font-size: 50px;
+            }
+            .container .text h2{
+             margin-top: 5px;
+             font-size: 20px;
+            }
+            
+            .container .text p{
+             margin-top: 10px;
+             font-size: 15px;
+            }
+            
+            .container #ekis{
+            position: absolute;
+            right: 10;
+            top: -100;
+            font-size: 40px;
+            cursor:pointer;
+            color: black;
+            transition: All .2s;
+        }
+        
+        .container #ekis:hover{
+            transform: scale(1.2);
+        }  
+        
+        .container #prom{
+            color: blue;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <a href="index.html"><span id="ekis">&times;</span></a>
+            <div class="about">                        
+                <img src="https://scontent.fmnl16-1.fna.fbcdn.net/v/t39.30808-6/428699805_340970412270155_4521787333410011108_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFpJp69CxHF8g_iZEeBQ942spmq_7Ifqpuymar_sh-qmxqB_TFmPI8kVPdF1ds6czBYinNQ6KqQgQp8fnfYX8f4&_nc_ohc=krBhTcHXvcsAX82Nk5w&_nc_ht=scontent.fmnl16-1.fna&oh=00_AfBOiNp6Ass98k1sf93DEsduTnW1ZCR3bpdpDJY2vCL8SA&oe=65F0D21C" width="300" height="300"></img>
+    </div>            
+                <div class="text">
+                <h1>About us</h1>
+                <h2>Code <span id="prom">Programmer</span></h2>
+                <p>Hi, I'm school student, learning html, css, and JavaScript. <br>I'm making this website for reporting
+                and I have experience<br> making html and css expect JavaScript. My name<br>
+                is <u>Jhon Gabriel Dismaya</u>, I'm ready reporting on wednesday</p>
+            </div>
+        </div>
+    </body>
+</html>

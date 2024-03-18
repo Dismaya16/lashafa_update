@@ -1,0 +1,138 @@
+<html>
+    <head>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                
+            }
+            body{
+                background: lightgray;
+            }
+            
+            .signup-form{
+                width: 30%;
+                height: 350px;
+                background: white;
+                margin: 100px auto;
+                color: black;                
+                font-size: 15px;
+                box-shadow: 0px 2px 5px;
+                border-radius: 20px;
+            }
+            .input-box{
+               position: relative;
+                margin: 10px 10px;
+                width: 80%;
+                height: 10%;
+            }
+            .signup-form h1{
+                font-size: 40px;
+                text-align: center;
+            }
+            .signup-form .input-box input{
+                width: 100%;
+                height: 100%;
+                background: transparent;
+                border: none  ;              
+                border-radius: 20px;
+                border: 1px solid black;
+                padding-left: 10px;
+            }
+             .signup-form .input-box input::placeholder{
+                color: black;
+            }
+             .signup-form .input-box i{
+                position: absolute;
+                right: 20px;
+                top: 30%;
+            }
+            
+            .signup-form .input-checkbox{
+                margin-left: 15px;
+            }
+            
+            .signup-form .input-checkbox{
+                margin-left: 15px;
+                margin-top: 15px;
+            }
+            .signup-form .input-checkbox label input{
+                accent-color: black;
+                margin-right: 3px;
+     
+            }
+            
+            .signup-form .btn{
+            display: flex;             
+            justify-content: space-between;
+            align-items: center;             
+            margin: 15px;
+            }
+            
+            .signup-form .btn button{
+            border: none;
+            border: 1px solid black;
+                    background: white;
+                color:black;
+                 padding: 7px 30px;
+                 border-radius: 10px;
+                 cursor: pointer;
+                 transition: All .2s;
+            }
+            
+            .signup-form .btn button:hover{
+                transform: scale(1.2);
+            }
+            
+            .signup-form .paragraph{
+                align-items:center;
+                justify-content: center;
+                margin-top: 15px;
+                display: flex;
+            }
+            
+             .signup-form .paragraph p{
+               margin-right: 5px;
+            }
+            
+            
+        </style>
+    </head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <body>
+        <div class="signup-form">
+            <form>
+                 <h1>Sign Up</h1>
+                <div class="input-box">
+                <input type="text"name="username" placeholder="Username" required>
+                <i class="fa-solid fa-user"></i>
+                </div>
+                <div class="input-box">
+                <input type="email" name="email"  placeholder="Email" required>
+                <i class="fa-solid fa-envelope"></i>
+               </div>
+               <div class="input-box">
+                <input type="password" name="password" placeholder="Password" required>
+                <i class="fa-solid fa-lock"></i>
+                 </div>
+                 <div class="input-box">
+                <input type="number" name="phone" placeholder="Phone Number" required>
+                <i class="fa-solid fa-phone"></i>
+                </div>
+                <div class="input-checkbox">
+                <label><input type="checkbox">Agree to Terms and Conditions</label>
+                </div>
+                <div class="btn">
+                <button onclick="location.href='index.html'">Back</button></a>                    
+                <button>Sign up</button>
+                </div>
+                <div class="paragraph">
+                    <p>Have an account?</p> 
+                    <a href="login.html">Login</a>
+                </div>
+            </form>
+
+        </div>
+    </body>
+</html>
